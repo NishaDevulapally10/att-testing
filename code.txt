@@ -1,0 +1,88 @@
+package mp;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class mp {
+
+	public static void main(String[] args) throws InterruptedException, AWTException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\nagaraju\\Downloads\\chromedriver_win32 (10)\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://www.google.com");
+		WebElement srhbar=driver.findElement(By.name("q"));
+		srhbar.sendKeys("tsrtc ticket booking");
+		srhbar.sendKeys(Keys.ENTER);
+		Thread.sleep(5000);
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+        WebElement link=driver.findElement(By.xpath("(//h3[@class='LC20lb MBeuO DKV0Md'])[1]"));
+        link.click();
+        Thread.sleep(3000);
+        WebElement fpn=driver.findElement(By.name("fromPlaceName"));
+        fpn.sendKeys("HYDERABAD");
+        Thread.sleep(2000);
+        fpn.sendKeys(Keys.ENTER);
+        WebElement tpn=driver.findElement(By.name("toPlaceName"));
+        tpn.sendKeys("MUMBAI");
+        Thread.sleep(2000);
+        tpn.sendKeys(Keys.ENTER);
+        WebElement departon=driver.findElement(By.name("txtJourneyDate"));
+        departon.click();
+        WebElement date=driver.findElement(By.xpath("(//a[@class='ui-state-default'])[1]"));
+        date.click();
+        Thread.sleep(5000);
+        WebElement ca=driver.findElement(By.name("searchBtn"));
+        ca.click();
+        Thread.sleep(3000);
+        WebElement slctseats=driver.findElement(By.name("SrvcSelectBtnForward"));
+        slctseats.click();
+        Thread.sleep(3000);
+        WebElement bp=driver.findElement(By.id("ForwardBoardId"));
+        bp.click();
+        Robot so1=new Robot();
+        so1.keyPress(KeyEvent.VK_DOWN);
+        Thread.sleep(1000);
+        so1.keyPress(KeyEvent.VK_ENTER);
+        Thread.sleep(2000);
+        WebElement dp=driver.findElement(By.id("ForwardDroppingId"));
+        dp.click();
+        Robot so2=new Robot();
+        so2.keyPress(KeyEvent.VK_DOWN);
+        Thread.sleep(1000);
+        so2.keyPress(KeyEvent.VK_ENTER);
+        Thread.sleep(2000);
+        WebElement slayout=driver.findElement(By.id("fwLtBtn"));
+        slayout.click();
+        Thread.sleep(2000);
+        WebElement seat=driver.findElement(By.id("Forward30"));
+        seat.click();
+        WebElement bname=driver.findElement(By.name("bookedByName"));
+        bname.sendKeys("Harshitha");
+        WebElement bmn=driver.findElement(By.name("mobileNo"));
+        bmn.sendKeys("9676412290");
+        WebElement bemail=driver.findElement(By.name("email"));
+        bemail.sendKeys("20r01a05k7@cmritonline.ac.in");
+        WebElement gdr=driver.findElement(By.name("genderCodeId"));
+        gdr.click();
+        Robot gender=new Robot();
+        gender.keyPress(KeyEvent.VK_DOWN);
+        gender.keyPress(KeyEvent.VK_ENTER);
+        Thread.sleep(2000);
+        WebElement age=driver.findElement(By.name("passengerAge"));
+        age.sendKeys("20");
+        Thread.sleep(5000);
+        WebElement ctn=driver.findElement(By.xpath("(//input[@class='continueBtn'])[3]"));
+        ctn.click();
+        Thread.sleep(2000);
+        driver.close();
+	}
+
+}
